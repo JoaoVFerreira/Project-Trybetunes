@@ -37,7 +37,7 @@ class Header extends Component {
         <Link to="/profile" data-testid="link-to-profile"> Profile </Link>
         <h1>Aqui está o header</h1>
         {!receivedName && <Carregando />}
-        <h3 testid="header-user-name">
+        <h3 data-testid="header-user-name">
           {nameIs}
         </h3>
       </header>
