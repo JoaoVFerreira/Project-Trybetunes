@@ -8,7 +8,7 @@ class AlbumCard extends Component {
     const { albumArtistName } = this.props;
     return (
       <section>
-        <h3>{`Resultado de álbuns de: ${albumArtistName}`}</h3>
+        <h3>{albumArtistName && `Resultado de álbuns de: ${albumArtistName}` }</h3>
         {storeData.map(({ artistName, collectionName, artworkUrl100, collectionId }) => (
           <div key={ collectionId }>
             <Link
