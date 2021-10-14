@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Loader from 'react-loader-spinner';
 
-class Carregando extends Component {
+export default class Carregando extends React.Component {
   render() {
     return (
-      <h1>Carregando...</h1>
+      <div id="loading">
+        <Loader
+          type="BallTriangle"
+          color="#00BFFF"
+          height={ 80 }
+          width={ 80 }
+          align="center"
+        />
+      </div>
     );
   }
 }
-
-export default Carregando;

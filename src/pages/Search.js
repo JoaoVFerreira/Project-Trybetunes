@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AlbumCard from '../components/AlbumCard';
-import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from './Carregando';
+import Header from '../components/Header';
 
 class Search extends Component {
   constructor() {
@@ -45,6 +45,12 @@ class Search extends Component {
         });
       },
     );
+    this.artistNameStorage();
+  }
+
+  artistNameStorage() {
+    const { artistName } = this.state;
+    localStorage.setItem('ARTISTName', JSON.stringify([artistName]));
   }
 
   render() {
@@ -56,27 +62,31 @@ class Search extends Component {
     const { handleChange, apiFetch } = this;
     return (
       <div data-testid="page-search">
-        <h1>SEARCH</h1>
         <Header />
-        <form>
-          <input
-            data-testid="search-artist-input"
-            type={ loading ? 'hidden' : 'text' }
-            name="artistName"
-            placeholder="Nome do Artista"
-            value={ artistName }
-            onChange={ handleChange }
-          />
-          <button
-            type="button"
-            style={ { display: loading && 'none' } }
-            data-testid="search-artist-button"
-            disabled={ artistName.length < minCharacter }
-            onClick={ apiFetch }
-          >
-            Procurar
-          </button>
-        </form>
+        <div id="search-general">
+          <form>
+            <input
+              id="placeholder-search"
+              data-testid="search-artist-input"
+              type={ loading ? 'hidden' : 'text' }
+              name="artistName"
+              placeholder="TYPE ANY ARTIST NAME"
+              value={ artistName }
+              onChange={ handleChange }
+            />
+            <button
+              id="btn-search"
+              type="button"
+              style={ { display: loading && 'none' } }
+              data-testid="search-artist-button"
+              disabled={ artistName.length < minCharacter }
+              onClick={ apiFetch }
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <hr id="brake-line" />
         {loading && <Carregando />}
         {notFoundArtist && <h3>Nenhum álbum foi encontrado</h3>}
         <AlbumCard storeData={ storeData } albumArtistName={ albumArtistName } />

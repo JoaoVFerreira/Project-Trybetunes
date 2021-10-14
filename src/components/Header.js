@@ -31,16 +31,35 @@ class Header extends Component {
   render() {
     const { receivedName, nameIs } = this.state;
     return (
-      <header data-testid="header-component">
-        <Link to="/search" data-testid="link-to-search"> Search </Link>
-        <Link to="/favorites" data-testid="link-to-favorites"> Favorites </Link>
-        <Link to="/profile" data-testid="link-to-profile"> Profile </Link>
-        <h1>Aqui está o header</h1>
+      <>
+        <header className="header" data-testid="header-component">
+          <Link
+            className="header-link"
+            to="/search"
+            data-testid="link-to-search"
+          >
+            Search
+          </Link>
+          <Link
+            className="header-link"
+            to="/favorites"
+            data-testid="link-to-favorites"
+          >
+            Favorites
+          </Link>
+          <Link
+            className="header-link"
+            to="/profile"
+            data-testid="link-to-profile"
+          >
+            Profile
+          </Link>
+        </header>
         {!receivedName && <Carregando />}
-        <h3 data-testid="header-user-name">
-          {nameIs}
+        <h3 id="name-login" data-testid="header-user-name">
+          {`Welcome ${nameIs}!`}
         </h3>
-      </header>
+      </>
     );
   }
 }

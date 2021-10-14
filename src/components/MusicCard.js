@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
 
 class MusicCard extends Component {
@@ -15,14 +15,27 @@ class MusicCard extends Component {
   }
 
   async keepFavoriteSongs(track) {
+    const { getBackFavSOng } = this.state;
+    if (getBackFavSOng.includes(track)) {
+      return this.setState({
+        loading: true,
+      }, async () => {
+        await removeSong(track);
+        const removeFavSong = await getFavoriteSongs();
+        this.setState({
+          loading: false,
+          getBackFavSOng: removeFavSong,
+        });
+      });
+    }
     this.setState({
       loading: true,
     }, async () => {
       await addSong(track);
-      const keep = await getFavoriteSongs();
+      const store = await getFavoriteSongs();
       this.setState({
         loading: false,
-        getBackFavSOng: keep,
+        getBackFavSOng: store,
       });
     });
   }
@@ -32,28 +45,32 @@ class MusicCard extends Component {
     const { loading, getBackFavSOng } = this.state;
     const { keepFavoriteSongs } = this;
     if (loading) return <Carregando />;
-    console.log(getBackFavSOng);
     return (
       <div>
         {storeMusic.slice(1).map(({ trackName, previewUrl, trackId }) => (
-          <div key={ trackId }>
-            <p>{ trackName }</p>
-            <audio data-testid="audio-component" src={ previewUrl } controls>
-              <track kind="captions" />
-              O seu navegador não suporta o elemento
-              <code>audio</code>
-              .
-            </audio>
-            <label htmlFor={ `favorite-${trackId}` }>
-              Favorita
-              <input
-                onChange={ () => keepFavoriteSongs(trackId) }
-                id={ `favorite-${trackId}` }
-                checked={ getBackFavSOng.some((t) => t === trackId) }
-                type="checkbox"
-                data-testid={ `checkbox-music-${trackId}` }
-              />
-            </label>
+          <div className="music-style" key={ trackId }>
+            <div className="p">
+              <p>{ trackName }</p>
+            </div>
+            <div className="audio">
+              <audio data-testid="audio-component" src={ previewUrl } controls>
+                <track kind="captions" />
+                O seu navegador não suporta o elemento
+                <code>audio</code>
+                .
+              </audio>
+              <span className="tw-heart-box" htmlFor={ `favorite-${trackId}` }>
+                <input
+                  onChange={ () => keepFavoriteSongs(trackId) }
+                  id={ `favorite-${trackId}` }
+                  checked={ getBackFavSOng.includes(trackId)
+                  && getBackFavSOng.some((t) => t === trackId) }
+                  type="checkbox"
+                  data-testid={ `checkbox-music-${trackId}` }
+                />
+                <span className="tw-heart" />
+              </span>
+            </div>
           </div>
         ))}
       </div>

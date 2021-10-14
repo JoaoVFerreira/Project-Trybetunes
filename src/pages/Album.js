@@ -20,13 +20,13 @@ class Album extends Component {
   async listMusicApi() {
     const { match: { params: { id } } } = this.props;
     this.setState({ storeMusic: await getMusics(id) });
+    localStorage.setItem('idALBUM', JSON.stringify(id));
   }
 
   render() {
     const { storeMusic } = this.state;
     return (
       <div data-testid="page-album">
-        <h1>ALBUM</h1>
         <Header />
         {storeMusic.length
         && <h2 data-testid="artist-name">{ storeMusic[0].artistName }</h2>}

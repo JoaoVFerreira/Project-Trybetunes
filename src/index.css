@@ -12,8 +12,252 @@ code {
     monospace;
 }
 
-.loading {
+#loading {
   align-items: center;
   display: flex;
   justify-content: center;
+  height: 80vh;
+  width: 100vw;
+}
+
+#placeholder-login {
+  text-align: center;
+}
+
+.login-general {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://images.freeimages.com/images/large-previews/543/vinyl-record-1308613.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 80%;
+}
+
+.login-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 50vh;
+}
+
+.login-btn{
+  position: relative;
+  display: block;
+  color: green;
+  font-size: 14px;
+  font-family: "montserrat";
+  text-decoration: none;
+  margin: 10px 0;
+  border: 2px solid #ff7675;
+  padding: 14px 60px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 1s all ease;
+  width: 190px;
+}
+.login-btn::before{
+  background: #ff7675;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+
+.login-input {
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.header {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+}
+
+#name-login {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+#search-general {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#placeholder-search {
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: black 5px;
+}
+
+#btn-search {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 14px;
+  font-family: "montserrat";
+  text-decoration: none;
+  margin: 10px 0;
+  border: 2px solid #ff7675;
+  padding: 14px 60px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 1s all ease;
+  width: 190px;
+}
+
+#brake-line {
+  margin-top: 50px;
+  width: 50vw;
+  background-color: black;
+}
+
+.album-style {
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 11.8%;
+  border-radius: 5px;
+  margin: 10px;
+  align-content: flex-start;
+}
+
+.album-style:hover {
+  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+}
+
+.album-style-2 {
+  padding: 2px 16px;
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+  width: 150px;
+}
+
+.container-album {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.tw-heart-box {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.tw-heart {
+  background: url(http://i.imgur.com/zw8ahUb.png) no-repeat 0 0;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+[type="checkbox"]:checked + .tw-heart {
+  transition: background .8s steps(28);
+  background-position: -2800px 0;
+}
+
+[type="checkbox"] {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.music-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: flex-start;
+}
+
+.audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 30px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.edit-profile {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.edit {
+  padding: 5px;
+  box-shadow: black 5px;
+}
+
+.input-edit {
+  padding: 5px;
+  box-shadow: black 5px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.edit-btn {
+  position: relative;
+  display: block;
+  color: green;
+  font-size: 14px;
+  font-family: "montserrat";
+  text-decoration: none;
+  margin-top: 20px;
+  margin-left: 5px;
+  border: 2px solid #ff7675;
+  padding: 14px 60px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 1s all ease;
+  width: 190px;
+}
+
+.profile-saved {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#img-perfil {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+#eH3 {
+  text-align: center;
 }
